@@ -1,1 +1,10 @@
-remote_theme: pages-themes/minimal
+remote_theme: just-the-docs
+
+color_scheme: dark 
+aux_links:
+  "GitHub Repository": "https://aileencohen.github.io/jaspar-motif-downloader/" 
+
+nav_external_links:
+  - title: JASPAR Database
+    url: https://jaspar.genereg.net/
+    hide_icon: false 
