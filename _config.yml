@@ -8,4 +8,4 @@ tagline: "Python GUI for Batch Downloading Human TF Motifs"
 theme_mode: dark 
 
 show_downloads: true 
-github: [repository_url: "https://aileencohen.github.io/jaspar-motif-downloader/"]
+github: [repository_url: "https://github.com/AileenCohen/jaspar-motif-downloader.git"]
