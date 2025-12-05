@@ -1,4 +1,4 @@
-# JASPAR Motif Downloader (Human TFs)
+
 
 A standalone Python GUI application for quickly searching and downloading human Transcription Factor (TF) binding motifs (PFM files) from the JASPAR CORE database.
 ## Project Overview
