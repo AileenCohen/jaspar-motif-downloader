@@ -1,11 +1,7 @@
-remote_theme: riggraz/minimalist-theme
+theme: minima
 
-lang: en-US
 title: JASPAR Motif Downloader
-tagline: "Python GUI for Batch Downloading Human TF Motifs"
-
-
-theme_mode: dark 
-
-show_downloads: true 
-github: [repository_url: "https://github.com/AileenCohen/jaspar-motif-downloader.git"]
+author: Aileen Cohen
+description: >- 
+  A Python GUI application for searching and performing batch downloads of human
+  Transcription Factor (TF) binding motifs from the JASPAR CORE database.
