@@ -5,7 +5,7 @@ A standalone Python GUI application for quickly searching and downloading human 
 
 This program offers a responsive interface for retrieving Position Frequency Matrices (PFMs) from the JASPAR database.
 
-This project was significantly improved to include concurrency (threading) to prevent the application from freezing during long network operations, and advanced file handling for structured batch processing and logging, which fulfills the assignment requirements.
+This project was significantly improved to include concurrency (threading) to prevent the application from freezing during long network operations, and advanced file handling for structured batch processing and logging.
 
 ## Why would you use this?
 This application provides essential functionality for studying gene regulation, specifically the role of TFs. TFs bind to specific DNA sequences (motifs) to control gene expression (turning genes on or off).  So this tool is relevant because:
