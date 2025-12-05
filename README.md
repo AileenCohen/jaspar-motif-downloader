@@ -1,12 +1,18 @@
 # JASPAR Motif Downloader (Human TFs)
 
 A standalone Python GUI application for quickly searching and downloading human Transcription Factor (TF) binding motifs (PFM files) from the JASPAR CORE database.
-
 ## Project Overview
 
-This program provides a  responsive interface for to retrieve Position Frequency Matrices (PFMs) from the JASPAR database.
+This program offers a responsive interface for retrieving Position Frequency Matrices (PFMs) from the JASPAR database.
 
 This project was significantly improved to include concurrency (threading) to prevent the application from freezing during long network operations, and advanced file handling for structured batch processing and logging, which fulfills the assignment requirements.
+
+## Why would you use this?
+This application provides essential functionality for studying gene regulation, specifically the role of TFs. TFs bind to specific DNA sequences (motifs) to control gene expression (turning genes on or off).  So this tool is relevant because:
+- *Accelerated Discovery*: It provides fast, dedicated access to the highly curated JASPAR database, enabling quick retrieval of binding motifs needed for immediate analysis in genomics and genetics research.
+- *Batch Automation*: Modern experiments often identify hundreds of potential TFs. The Batch Download from CSV feature enables the automation of downloading entire lists and generating organized reports, transforming a manual, hours-long task into a fast, automated pipeline step.
+- *Data Reliability and Traceability*: The integrated logging (jaspar_log.txt) and structured CSV reporting ensure every data retrieval is documented, meeting standards for data reliability and traceability required in scientific research in general.
+
 
 ## Features
 
@@ -33,6 +39,7 @@ jaspar-motif-downloader/
 ├── requirements.txt          # Python dependencies
 ├── .gitignore                # Excludes cache files and logs
 ├── README.md                 # This documentation file
+├── Example_batch_input.csv   # An example file containing a bunch of TFs for you to try.               
 └── jaspar_log.txt            # (Generated) Log file documenting all operations
 
 ```
