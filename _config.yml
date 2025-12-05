@@ -1,12 +1,11 @@
-remote_theme: chirpy-theme/jekyll-theme-chirpy
+remote_theme: riggraz/minimalist-theme
 
 lang: en-US
-timezone: Asia/Jerusalem 
 title: JASPAR Motif Downloader
-tagline: "A Python GUI for Batch Downloading Human TF Motifs"
+tagline: "Python GUI for Batch Downloading Human TF Motifs"
+
 
 theme_mode: dark 
-accent_color: teal 
 
-aux_links: {}
-nav_external_links: {}
+show_downloads: true 
+github: [repository_url: "https://aileencohen.github.io/jaspar-motif-downloader/"]
