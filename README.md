@@ -52,7 +52,7 @@ Prerequisites
 
 Clone the repository:
 ```
-git clone https://github.com/USERNAME/jaspar-motif-downloader.git
+git clone https://github.com/aileencohen/jaspar-motif-downloader.git
 cd jaspar-motif-downloader
 ```
 
