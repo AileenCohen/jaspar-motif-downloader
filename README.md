@@ -4,31 +4,37 @@ A standalone Python GUI application for quickly searching and downloading human 
 
 ## Project Overview
 
-This program provides a user-friendly interface for researchers and students to interact with the JASPAR database. It streamlines the retrieval of Position Frequency Matrices (PFMs), which are essential for analyzing regulatory elements in the human genome.
+This program provides a  responsive interface for to retrieve Position Frequency Matrices (PFMs) from the JASPAR database.
 
-The application follows modern Python best practices, separating the core logic (API communication, file handling) from the user interface (Tkinter GUI).
+This project was significantly improved to include concurrency (threading) to prevent the application from freezing during long network operations, and advanced file handling for structured batch processing and logging, which fulfills the assignment requirements.
 
 ## Features
 
-**JASPAR CORE Search**: Query the JASPAR API using a TF name (e.g., FOS, STAT1).
+**Responsive GUI**: Network-intensive tasks (Search, Single Download, Batch Process) run in separate threads, ensuring the graphical interface (Tkinter) remains responsive and does not freeze.
 
-**Human-Specific Filtering**: Limits all results to Homo sapiens (Tax ID 9606).
+**Batch Processing**: Read a list of TF keywords from an input CSV file and automatically download the corresponding motifs.
 
-**Safe File Handling**: Generates robust, OS-safe default filenames.
+**Structured Report Generation**: Writes a new CSV report file (jaspar_batch_report_...csv) summarizing the success, Matrix ID, file path, or error for every TF in the batch. 
+*(Uses CSV File Writing).*
 
-**Download Logging**: All searches and downloads are recorded in jaspar_log.txt.
+**Activity Logging**: Records all successful actions (searches, downloads, batch completion) in a local file, jaspar_log.txt. 
+*(Uses Text File Appending).*
 
-**Intuitive GUI**: Clean Tkinter interface for easy searching and downloading.
+**Robust Filenaming**: Safely sanitizes motif names to prevent crashes when saving files with illegal characters (:, /, etc.) on Windows or Linux.
+
+**Human-Specific Filtering**: Automatically limits results to Homo sapiens (Tax ID 9606).
 
 ## Project Structure
 ```
 jaspar-motif-downloader/
 ├── main.py                   # Application entry point (starts the GUI)
-├── motif_search_gui.py       # Handles the Tkinter User Interface
-├── motif_search.py           # Core logic: API communication, file handling, logging
+├── motif_search_gui.py       # Handles the Tkinter User Interface and threading
+├── motif_search.py           # Core logic (API, Logging, Thread Locking, CSV processing)
+├── requirements.txt          # Python dependencies
+├── .gitignore                # Excludes cache files and logs
 ├── README.md                 # This documentation file
-├── requirements.txt          # Python dependencies (e.g., requests)
-└── .gitignore                # Excludes virtual environments and cache files
+└── jaspar_log.txt            # (Generated) Log file documenting all operations
+
 ```
 ## Installation
 Prerequisites
@@ -54,18 +60,58 @@ Run the application:
 python main.py
 ```
 
-A GUI window will open, allowing you to enter a transcription factor name, search JASPAR, and download PFM files.
+**Mode 1**: Single Search & Download
 
-## Important Notes
+- Enter a TF name (e.g., "FOS").
 
-Logging: All search queries and successful downloads are saved in jaspar_log.txt.
+- Click "Search JASPAR" to view results in the table.
 
-Rate Limiting: API requests are handled safely to respect standard limits.
+- Select one motif and click "Download Selected Motif".
 
-## Future Enhancements
+**Mode 2**: Batch Download from CSV (Advanced File Handling)
 
-Support additional JASPAR collections (not only CORE).
+- Prepare a CSV file where Column A contains the list of TF names you wish to download (e.g., SPI1, JUN, CEBPA).
 
-Allow selecting the output directory from the GUI.
+- Example input format:
+```
+SPI1
+JUN
+HNF4A
+```
+- Click "Batch Download from CSV".
 
-Optional integration with motif visualization or alignment tools.
+- The app will first prompt you to select your Input CSV file.
+
+- Next, it will prompt you to select the Output Folder where all PFM files and the summary report will be saved.
+
+- The app processes the list, downloading the best-matching human motif for each TF
+
+## File Handling and Report Generation
+
+The batch mode relies heavily on structured file handling:
+
+*CSV Input Reading*: The app uses the csv module to safely read the list of TFs from the user's input file.
+
+*CSV Report Writing*: Upon completion, the app generates a detailed report CSV (e.g., jaspar_batch_report_...csv) using csv.DictWriter. This report allows you to quickly verify the outcome of every request:
+
+*TF_Keyword*: The name you searched for.
+
+*Status*: SUCCESS or FAILED.
+
+*Matrix_ID*: The ID of the downloaded motif.
+
+*File_Path*: The local path to the saved PFM file.
+
+*Error_Message*: Details if the download failed.
+
+*Log File*: The non-structured jaspar_log.txt is continuously updated using file appending ('a'), providing a chronological history of all application actions.
+
+## Possible Future Enhancements
+
+- Support additional JASPAR collections (not only CORE).
+
+- Allow selecting the output directory from the GUI.
+
+- Optional integration with motif visualization or alignment tools.
+
+Please offer more if you have any suggestions!
