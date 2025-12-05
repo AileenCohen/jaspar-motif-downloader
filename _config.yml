@@ -1,10 +1,12 @@
-remote_theme: just-the-docs
+remote_theme: chirpy-theme/jekyll-theme-chirpy
 
-color_scheme: dark 
-aux_links:
-  "GitHub Repository": "https://aileencohen.github.io/jaspar-motif-downloader/" 
+lang: en-US
+timezone: Asia/Jerusalem 
+title: JASPAR Motif Downloader
+tagline: "A Python GUI for Batch Downloading Human TF Motifs"
 
-nav_external_links:
-  - title: JASPAR Database
-    url: https://jaspar.genereg.net/
-    hide_icon: false 
+theme_mode: dark 
+accent_color: teal 
+
+aux_links: {}
+nav_external_links: {}
